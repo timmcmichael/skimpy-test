@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 10.2.1" />
+<title>Skimpy OOP: Introduction to Object-Oriented Programming using Java</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overridden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(1);
+/*]]>*/
+</script>
+</head>
+<body class="book">
+<div id="header">
+<h1>Skimpy OOP: Introduction to Object-Oriented Programming using Java</h1>
+<span id="author">Tim McMichael</span><br />
+<div id="toc">
+  <div id="toctitle">Skimpy Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_skimpy_preface_an_excuse_for_the_inadequacies_within">Skimpy Preface: An Excuse For The Inadequacies Within</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This isn&#8217;t a real textbook.
+It&#8217;s not <em>imaginary</em> or anything, it&#8217;s just missing most of the stuff a real textbook includes. It&#8217;s, well, skimpy.</p></div>
+<div class="paragraph"><p>This content is intended to be a companion to CIS150AB, which is an introduction to object-oriented programming. Since you&#8217;ll be attending (or viewing recordings of) lectures, and you&#8217;ll have access to additional content in Canvas (our LMS), this text doesn&#8217;t try to cover everything; it tries to give you the basic information you&#8217;ll need in order to get the most out of that other content.</p></div>
+<div class="paragraph"><p>It&#8217;s also skimpy because the purpose of this particular course, at least from my perspective, is not to give students a comprehensive look at a programming language.
+It&#8217;s an introductory course that&#8217;s taken by a variety of students. If you&#8217;re a coding student&#8212;majoring in <em>Programming and Systems Analysis</em> or <em>Web Design and Development</em>, for example&#8212;you&#8217;ll take language-specific courses that will get much more detailed, so our goal here is to give you a foundation for that.
+If you&#8217;re majoring in something else, you might not never write another line of code after the semester ends&#8212;I want you to learn about programming and software development so you can communicate with the coders in your workplace and have a general understanding of how an idea becomes a program or app.</p></div>
+<div class="paragraph"><p>It&#8217;s also possible that I just don&#8217;t know very much. You know, a skimpy brain.</p></div>
+<div class="sect2">
+<h3 id="_but_why_are_we_stuck_reading_this_ebook">But why are we stuck reading this eBook?</h3>
+<div class="paragraph"><p>The only reason I wrote this is because real textbooks are expensive.
+As I started to record more and more videos to supplement the real textbook I was using, students had less and less reason to actually read it.
+But I can&#8217;t cover everything we need in my videos, so I started writing content to fill in details I couldn&#8217;t get to.</p></div>
+<div class="paragraph"><p>To be clear, this <strong>isn&#8217;t</strong> skimpy just because students don&#8217;t bother to read textbooks that are dense and detailed.
+That sometimes seems true, but you&#8217;re different; I can tell just by looking at you!
+But I acknowledge that many students prefer video content and in-person instruction rather reading, so this is my attempt to meet those students halfway.</p></div>
+<div class="paragraph"><p>This eBook might not be very good or very detailed, but it is very free.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_and_why_are_we_using_java_instead_of_the_language_i_like">And why are we using Java instead of the language I like?</h3>
+<div class="paragraph"><p><em>looking at you, Python nerds&#8230;</em></p></div>
+<div class="paragraph"><p>Okay, there are a few reasons:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+It&#8217;s cross-platform, so my students can use Windows, macOS, or Linux machines and I can grade the work without hassle on whatever machine I&#8217;m currently using.
+</p>
+</li>
+<li>
+<p>
+I like the way Java implements OOP, which I think is "weaker" in Python
+</p>
+</li>
+<li>
+<p>
+Since it uses C syntax, Java skills transfer well to a lot of other languages.
+</p>
+</li>
+<li>
+<p>
+At <a href="https://www.estrellamountain.edu">Estrella Mountain Community College</a>, we have other CIS classes that teach C# (my favorite OOP language) and Python. I want students using something different for this course.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>If I&#8217;m doing this right, what you&#8217;re mostly learning here is a good foundation of OOP (and general programming) skills and concepts.
+We happen to be using Java to do that, but these skills transfer to pretty much any other language you want to learn.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0000_getting_started_chapter_0">0000 - Getting Started (Chapter 0)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Identify the stuff you need to write Java programs
+</p>
+</li>
+<li>
+<p>
+Get your computer ready to go
+</p>
+</li>
+</ul></div>
+<hr />
+<div class="paragraph"><p>Our goal is to learn the fundamentals of <strong>object-oriented programming</strong> using the <strong>Java</strong> programming language.
+You might not even know what those things mean yet, but in order to get started you&#8217;ll need a couple things installed on your computer.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Java Development Kit (JDK)
+</dt>
+<dd>
+<p>
+A collection of software, used to develop Java programs. Most importantly, it includes a <strong>compiler</strong>.
+</p>
+</dd>
+<dt class="hdlist1">
+Integrated Development Environment (IDE)
+</dt>
+<dd>
+<p>
+An application used to write and test source code.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>These two tools can be used on pretty much any laptop or desktop computer, even if it&#8217;s not a very great computer.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Heads Up!</div>
+<div class="paragraph"><p>Java development on a chromebook or iPad is tricky and not recommended for beginners. Use a different computer if at all possible.</p></div>
+</div></div>
+<div class="paragraph"><p>The Canvas course includes some options for students who don&#8217;t have a computer capable of running the necessary software.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_install_the_java_development_kit">Install the Java Development Kit</h3>
+<div class="paragraph"><p>I recommend installing the JDK available at <a href="https://adoptium.net">https://adoptium.net</a>, and the Oracle JDK is another great option.
+Detailed directions for this installation can be found in Canvas&#8212;and about a gazillion web pages and Youtube videos.
+I recommend installing the JDK before installing your IDE.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_install_an_ide">Install an IDE</h3>
+<div class="paragraph"><p>A computer program is created by writing <strong>source code</strong>, which is just text and can be created using any text editor.
+However, developing programs with something like Notepad or TextEdit&#8212;which come with Windows and macOS, respectively&#8212;means going through some potentially confusing (or at least intimidating) steps each time you want to run your program.
+Though IDEs also do much more, the most important thing they do for beginners is give you a "run" button you can press whenever you want to test your code.</p></div>
+<div class="paragraph"><p>You can definitely write Java programs without using an IDE, but it&#8217;s kinda like getting engaged to someone you&#8217;ve only ever met online: the fact that it turns out okay for some people doesn&#8217;t mean it&#8217;s a good idea for you.
+The only people who should write code without an IDE already know too much about programming to be wasting their time reading this book.</p></div>
+<div class="paragraph"><p>There are a lot of great IDEs out there, including many free options, and ultimately it doesn&#8217;t matter which one you use: they all produce the same files, and a person looking at the files can&#8217;t tell what IDE you used.
+It&#8217;s like choosing between Word and Google Docs; each has strengths and weaknesses, but you can write romantic poems about your online fiancé (or fiancée) in either one.</p></div>
+<div class="paragraph"><p>I primarily use Visual Studio Code ("VS Code"), so that&#8217;s what you&#8217;ll see in most of my videos.
+It&#8217;s completely free and is available for Windows, macOS, and Linux.
+You can download it at <a href="https://code.visualstudio.com">https://code.visualstudio.com</a>, and the Canvas course includes detailed installation instructions.
+I recommend installing a JDK prior to installing an IDE.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Heads Up!</div>
+<div class="paragraph"><p>Visual Studio <strong>Code</strong> is not the same as Visual Studio! There&#8217;s a free version of Visual Studio (called Visual Studio Community) but it&#8217;s not intended to be used with Java.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0001_computers_and_coding_chapter_1">0001 - Computers and Coding (Chapter 1)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_2">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Understand the role of programming languages
+</p>
+</li>
+<li>
+<p>
+Get to know a little about Object-Oriented Programming (OOP)
+</p>
+</li>
+</ul></div>
+<hr />
+<div class="paragraph"><p>A computer is basically a device that executes a set of commands&#8212;and does so very quickly.
+Because the guts of a computer (a CPU) is kinda like a bunch of light switches&#8212;and I mean a <strong>BUNCH</strong> of light switches&#8212;it can only deal with a bunch of zeros and ones: a switch that is off is "zero," and a switch that&#8217;s on is "one."</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Never has the concept of a modern computer been so recklessly simplified. I feel shame.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>All of the information a computer handles ultimately has to be represented by some combination of 1s and 0s, which we call a <em>binary</em> (or "base-two") number system. The chapters of this eBook are numbered using binary to show basic examples of the numbering system: 0001 is, well, 1 in decical. And 0100 is 4 in decimal. We won&#8217;t get into binary numbers, but it&#8217;s not very complicated and is kind of interesting if you&#8217;re a nerd.</p></div>
+<div class="paragraph"><p>Imagine that your BFF is in your object-oriented programming class, but that cruel professor won&#8217;t let you sit together.
+When the professor turns his back, you can use your fingers to send a quick message to your BFF.
+Holding up your index finger might mean, "meet me in the library after class;" two fingers could mean, "send me a copy of your homework."
+As long as you agree on what each number means, you could pass along commands or information&#8212;it would be like your own little language.</p></div>
+<div class="paragraph"><p>Those commands that a computer can execute super fast?
+Each command, or <em>instruction</em>, is represented by a number&#8212;a binary number, since that&#8217;s the number system the computer uses.
+The little language the computer understands is called <strong>machine language</strong>.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Interesting</div>
+<div class="paragraph"><p>Just like people in different cultures use different languages, different CPU types use different languages. There are lots of different machine languages out there.</p></div>
+</div></div>
+<div class="paragraph"><p>You could give the computer a set of instructions (aka, a program) if you just looked up the binary number for each instruction you wanted to use.
+Of course, even a simple program requires a lot of instructions, so you&#8217;re going to be looking up a <strong>lot</strong> of stuff.</p></div>
+<div class="paragraph"><p>Few people actually <em>want</em> to do that, so so the rest of us use programming languages instead.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_programming_languages">Programming Languages</h3>
+<div class="paragraph"><p>A programming language is something that&#8217;s easier for humans to use than machine language, but is capable of being accurately translated to machine language.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">There are many, many programming languages. <a href="https://en.wikipedia.org/wiki/List_of_programming_languages">Seriously, there are a lot</a>.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>The instructions you write using a programming language is called <strong>source code</strong>.
+Translating source code file to a machine language file that can be executed is called <strong>compiling</strong>, and is done by an application called a compiler.
+When the computer runs the program, it&#8217;s using that machine language translation created by the compiler.
+Clicking on the icon to run Microsoft Word runs a file that&#8217;s been compiled from source code.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Related Video Content</div>
+<div class="paragraph"><p><a href="https://youtu.be/PR6u4KvAkas?si=uEStcPk5fZj2j&#8212;H">https://youtu.be/PR6u4KvAkas?si=uEStcPk5fZj2j&#8212;H</a></p></div>
+</div></div>
+<div class="paragraph"><p>video::Ur7KlIYh8rM[youtube]</p></div>
+<div class="paragraph"><p>video::test.mp4</p></div>
+<div class="paragraph"><p>Some programming languages don&#8217;t get translated ahead of time&#8212;they get translated "on the fly," as the program is running.
+That&#8217;s called <strong>interpreting</strong> instead of compiling.</p></div>
+<div class="paragraph"><p>The C programming language is an example of a compiled language, and Python is an example of an interpreted language.</p></div>
+<div class="paragraph"><p>Java is an interesting case, because it&#8217;s both compiled <strong>and</strong> interpreted.
+The JDK compiles your source code into an intermediate language called <em>bytecode</em>.
+To execute the program, you use the Java Runtime Environment to interpret that bytecode file as it executes.</p></div>
+<div class="paragraph"><p>Bytecode is very close to machine language.
+In fact, it&#8217;s basically a "virtual machine language"--a machine language for a CPU that doesn&#8217;t actually exist.
+This approach allows Java to be cross-platform (runnable on many different machines).
+A compiled machine language file only works on a computer that "speaks" the same machine language, but if you compile your program to a bytecode file, it&#8217;ll run on any computer that has the Java Runtime Environment installed&#8212;and that will interpret the bytecode as it executes.
+This "write once, run anywhere" ability contributes greatly to Java&#8217;s popularity.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_programming_paradigms">Programming Paradigms</h3>
+<div class="paragraph"><p>Programming what now?</p></div>
+<div class="paragraph"><p>Imagine that your long-lost uncle died and left you his giant collection of vinyl records. Or imagine it&#8217;d books, if that&#8217;s what you prefer.
+He also left you a bunch of money that can only be used buy whatever shelves, racks, and bins you need to store them.
+How would you organize the collection?
+You could group them by artist and then arrange them alphabetically, from <a href="https://youtu.be/xFrGuyw1V8s?si=2N4W5250-YP5Pdth">ABBA</a> to <a href="https://youtu.be/F2HH7J-Sx80?si=ByL5Vr4VVYmDA8Rv">Warren Zevon</a>.
+You could group them by genres (keeping disco separate from rock 'n' roll), or just put them in the order they were released.</p></div>
+<div class="paragraph"><p>There are tons of different ways to do it.
+None of them are really right or wrong, it just depends on what you prefer&#8212;or maybe on how you plan to find things later.
+Coding is similar, in that we all have different ways we imagine organizing a program or solving a problem.
+That&#8217;s kinda the idea of a programming paradigm: how do you think about the program you&#8217;re creating? How do you picture it being organized?</p></div>
+<div class="paragraph"><p>Just like programming languages, paradigms are numerous.
+In fact, some languages were created specifically to work well with a certain paradigm, and that&#8217;s one reason there are so many languages.
+But when someone is going to learn to code, there are often two paradigms we consider:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Procedural Programming
+</p>
+</li>
+<li>
+<p>
+Object-Oriented Programming (OOP)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>They have a lot in common, and in fact OOP is actually a type of procedural programming.
+Programmers love to argue why that approach is better than the other, in the same way some of my friends might argue about Ford trucks vs. Chevy trucks.
+And just like Ford vs. Chevy, there&#8217;s nothing inherently better about one paradigm or the other.
+Growing up, my first coding experiences were exclusively with procedural programming, and I stayed in that world until I began teaching Java&#8212;now I very much prefer OOP, both for my own programming and for teaching beginning coders.
+But that really is a personal preference, and I wouldn&#8217;t argue that OOP is <em>better</em> than procedural programming.
+Well, I wouldn&#8217;t argue <em>much</em>.</p></div>
+<div class="sect3">
+<h4 id="_comparing_procedural_programming_and_oop">Comparing Procedural Programming and OOP</h4>
+<div class="paragraph"><p>In procedural programming, we break up a program into the tasks we need to complete.
+Each individual task is handled by a set of statements that we call a <em>procedure</em>.</p></div>
+<div class="paragraph"><p>The data for your program&#8212;the stuff you&#8217;re keeping track of&#8212;is stored somewhere else.
+If a procedure needs something to complete its task, that data is sent to the procedure, which then sends back a result.
+In short, information is kept separate from the code that uses it and passed back-and-forth when necessary.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="chapter-1/images/ProceduralProgramming.png" alt="Diagram of procedural programming" />
+</div>
+<div class="title">Figure 1. Procedural Programming</div>
+</div>
+<div class="paragraph"><p>Many programming languages (including Python) refer to procedures as <em>functions</em>, and the term <em>subroutines</em> is also used in some cases; if you&#8217;ve done some programming in any language, you&#8217;ve almost certainly used procedures in some form.</p></div>
+<div class="paragraph"><p>In OOP, the focus shifts from procedures to <em>objects</em>, which are programming elements that bundle data with the procedures that use it, in contrast to procedural programming.
+We&#8217;ll explore the nature of objects in great detail going forward, so we won&#8217;t worry about describing it too much for now.</p></div>
+<div class="paragraph"><p>I have my own biases about the topic.
+I tend to think OOP lends itself especially well to things like graphical-user interfaces (GUIs) and games, as well as large projects developed by teams of programmers.</p></div>
+<div class="paragraph"><p>The bottom line is that, when faced with a programming task or project, my brain immediately starts thinking in terms of the objects the program will need.
+But that&#8217;s probably just a matter of habit; as I mentioned, I spent much of my life (including all of the time I spent as a professional programmer) seeing programs as a bunch of procedures.</p></div>
+<div class="paragraph"><p>It&#8217;s important that you&#8217;re aware of procedural programming, and we&#8217;ll refer to it occasionally, but our focus in this book is really on OOP.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_software_development_process">Software Development Process</h3>
+<div class="paragraph"><p>Learning to write code means creating a lot of programs&#8212;mostly small, straightforward programs at first.
+Remember those awful word problems where a train leaves Chicago traveling 40mph, and another train leaves Denver at 35mph?
+That kind of stuff; but in my course, we don&#8217;t get too caught up in the math.
+We care about understanding the requirements of a program and implementing it successfully.</p></div>
+<div class="paragraph"><p>As your programs become bigger and more complex, you&#8217;ll need to work within a formal design process in order to keep yourself organized and focused.
+Even with the smaller programs you&#8217;ll develop while learning the basics will benefit from a specific approach beyond just opening a new file and starting to type.
+If ensures that you use your time efficiently.
+And when you are faced with solving a programming problem that really intimidates you, the process will help make the task more approachable.</p></div>
+<div class="paragraph"><p>For big or small projects, a good general approach to software development is:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Analysis
+</dt>
+<dd>
+<p>
+Identify the goals and scope of the program. As a rule, keep it, small and focused&#8212;you can always add features later. <em>What does this program need to do?</em>
+</p>
+</dd>
+<dt class="hdlist1">
+Testing Plan
+</dt>
+<dd>
+<p>
+Determine how the final program will be tested. The testing plan will be useful, but most importantly, taking the time to establish a specific testing plan ensures that you thoroughly understand the program before you begin writing code. Don&#8217;t know how the program will work, you&#8217;re not yet ready to begin coding. <em>How will I make sure the program works correctly?</em>
+</p>
+</dd>
+<dt class="hdlist1">
+Implementation
+</dt>
+<dd>
+<p>
+Write and test the code. We say that this is an <em>iterative</em> (or "repetitive") process, meaning you&#8217;ll write and test one small piece, keeping at it until you know it&#8217;s good. Then you&#8217;ll move on to the next piece and repeat. <em>What code do I need in order to get the next part of the program working?</em>
+</p>
+</dd>
+<dt class="hdlist1">
+Revise or maintain
+</dt>
+<dd>
+<p>
+If your needs or program requirements change, you&#8217;ll need to go back to the first step and begin planning the next version. If not, you&#8217;ll need to monitor that the program continues to perform as expected over time. <em>What&#8217;s next for this program?</em>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>We&#8217;ll flesh out this process as we go&#8212;and as our programs become more advanced.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_first_java_program">First Java Program</h3>
+<div class="paragraph"><p>Enough of that, let&#8217;s try writing some code.</p></div>
+<div class="paragraph"><p>One of the (valid) criticisms of Java as a choice for beginners is that it&#8217;s a little complicated to create your first program.
+In Python, you just open a file and write your first command; in recent versions, C# has added that ability as well.
+But Java puts OOP front and center, and you can&#8217;t start writing statements until you define a class.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Related Video Content</div>
+<div class="paragraph"><p><a href="https://youtu.be/AKj8Jcy1zSc?si=0RQizL786bsoZhXB">https://youtu.be/AKj8Jcy1zSc?si=0RQizL786bsoZhXB</a></p></div>
+</div></div>
+<div class="paragraph"><p>Take a look at the code for a basic "Hello World" program; we&#8217;ll learn what all of these pieces are as we go, but we should at least identify them now.</p></div>
+<div class="listingblock">
+<div class="title">HelloWorld.java - Hello World program in Java</div>
+<div class="content"></div></div>
+<div class="paragraph"><p>Here are the parts of the program:</p></div>
+<div class="paragraph"><p>&lt;.&gt; Class declaration and start of a code block. This is a publicly accessible class called <code>HelloWorld</code>.
+&lt;.&gt; <code>main()</code> method declaration and start of a code block. <code>main()</code> is where a Java program starts running.
+&lt;.&gt; <code>println()</code> statement to output the message.
+&lt;.&gt; End of the <code>main()</code> method code black, as indicated by the indenting.
+&lt;.&gt; End of the class code block.</p></div>
+<div class="paragraph"><p>You&#8217;ll learn about all of these components as go.
+But for now, you&#8217;re off and running!</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0010_variables_chapter_2">0010 - Variables (Chapter 2)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_3">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Know how to select a data type
+</p>
+</li>
+<li>
+<p>
+Write code to declare variables and assign values
+</p>
+</li>
+</ul></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0011_methods_chapter_3">0011 - Methods (Chapter 3)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_4">What&#8217;s the Point?</h3>
+<div class="paragraph"><p>*</p></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0100_classes_and_objects_chapter_4">0100 - Classes and Objects (Chapter 4)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_5">What&#8217;s the Point?</h3>
+<div class="paragraph"><p>*</p></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0101_decisions_chapter_5">0101 - Decisions (Chapter 5)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_6">What&#8217;s the Point?</h3>
+<div class="paragraph"><p>*</p></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0110_loops_chapter_6">0110 - Loops (Chapter 6)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_7">What&#8217;s the Point?</h3>
+<div class="paragraph"><p>*</p></div>
+<hr />
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Bonus: Recursion
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_0111_debugging_chapter_7">0111 - Debugging (Chapter 7)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_8">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Distinguish between compile-time and runtime errors
+</p>
+</li>
+<li>
+<p>
+Learn some strategies for debugging your code
+</p>
+</li>
+<li>
+<p>
+Use the debugging tools available in your IDE
+</p>
+</li>
+</ul></div>
+<hr />
+<div class="paragraph"><p>As soon as you start writing your first lines of code, you&#8217;ll be writing code with bugs in it.
+Like Thanos, it&#8217;s inevitable.
+And like Thanos, you can use ludicrous time traveling to fix (decapitate?) your bugs.
+Well, you can&#8217;t do that last part, but you can fix them in the present; and hopefully, you can do it without too much frustration.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Link to intro to debugging video</p></div>
+</div></div>
+<div class="paragraph"><p>We categorize bugs into two general types:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Compile-time errors
+</dt>
+<dd>
+<p>
+Errors that prevent the compiler from fully processing your source code. These are generally the result of incorrect syntax&#8212;in other words, breaking the rules of the language.
+</p>
+</dd>
+<dt class="hdlist1">
+Runtime errors
+</dt>
+<dd>
+<p>
+Errors in which your code compiles, but it does not execute as intended. Crashes are obvious runtime errors, but making an incorrect calculation is also an example of a runtime error.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Fixing compile-time errors is just a matter of looking over your code and correcting the mistake.
+That&#8217;s not always as easy as it sounds&#8212;especially for beginners&#8212;but at least the compiler and/or your IDE can give you feedback about what and where the mistake is.</p></div>
+<div class="paragraph"><p>Runtime errors can be especially frustrating, especially since we can&#8217;t always tell at what point the actual error is occurring.
+Did I make the mistake at the start of the program when I calculated the answer, is the mistake at the very end where I output it?
+Or did I do something in the middle that accidentally changed the result?
+Who knows! And if you&#8217;re like me, you might have done all three&#8230;</p></div>
+</div>
+<div class="sect2">
+<h3 id="_finding_runtime_errors">Finding Runtime Errors</h3>
+<div class="paragraph"><p>The single most important thing to you is see what actually going on while your program is running.
+Use output statements frequently.</p></div>
+<div class="listingblock">
+<div class="title">DebuggingOutput.java - Output statements to help with debugging</div>
+<div class="content"></div></div>
+<div class="paragraph"><p>The numbered lines identify output statements added to observe the program&#8217;s behavior.</p></div>
+<div class="paragraph"><p>Your IDE likely includes tools to help see what&#8217;s happening in your code by stepping through program execution.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Link to intro to VS Code debugging video</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1000_arrays_chapter_8">1000 - Arrays (Chapter 8)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_9">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Understand the role of arrays
+</p>
+</li>
+<li>
+<p>
+Create and use arrays
+</p>
+</li>
+<li>
+<p>
+Write loops to traverse arrays
+</p>
+</li>
+</ul></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resume_here">RESUME HERE</h2>
+<div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1001_inheritance_chapter_9">1001 - Inheritance (Chapter 9)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_10">What&#8217;s the Point?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Understand the purpose of inheritance
+*
+</p>
+</li>
+</ul></div>
+<hr />
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resume_here_2">RESUME HERE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>&lt;.&gt; inheritance overview
+&lt;.&gt; overriding
+&lt;.&gt; constructors
+&lt;.&gt; arrays of subclass objects
+&lt;.&gt; the Object class
+&lt;.&gt; more polymorphism?</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1010_variables_chapter_10">1010 - Variables (Chapter 10)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_8217_s_the_point_11">What&#8217;s the Point?</h3>
+<div class="paragraph"><p>*</p></div>
+<hr />
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2024-12-03 12:34:23 US Mountain Standard Time
+</div>
+</div>
+</body>
+</html>
